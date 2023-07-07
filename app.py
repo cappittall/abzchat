@@ -15,7 +15,7 @@ from langchain.indexes import VectorstoreIndexCreator
 # load_env()
 
 path = "data/chats"
-os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
+os.environ['OPENAI_API_KEY'] = st.secrets["openai"]
 
 loader = DirectoryLoader(path=path, glob='*.txt', show_progress=True, loader_cls=TextLoader)
 docs = loader.load()

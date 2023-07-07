@@ -48,7 +48,7 @@ def main():
         
     with st.sidebar:
         
-        lang = st.selectbox(translation[lang]["language"], options=['EN', "TR"])
+        lang = st.selectbox(translation["EN"]["language"], options=['EN', "TR"])
         
         files = st.file_uploader(translation[lang]["file_info"], 
                          accept_multiple_files=True, type=["txt"], help=translation[lang]["help"])

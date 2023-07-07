@@ -4,6 +4,7 @@ from streamlit_chat import message
 
 from tools.tools import read_models, load_env
 import os
+from translations import translation
 
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import (SystemMessage, HumanMessage, AIMessage)
@@ -15,7 +16,11 @@ from langchain.indexes import VectorstoreIndexCreator
 # load_env()
 
 path = "data/chats"
-os.environ['OPENAI_API_KEY'] = st.secrets["openai"]
+
+try:
+    os.environ['OPENAI_API_KEY'] = st.secrets["openai"]
+except:
+    load_env()
 
 loader = DirectoryLoader(path=path, glob='*.txt', show_progress=True, loader_cls=TextLoader)
 docs = loader.load()
@@ -23,24 +28,70 @@ docs = loader.load()
 index = VectorstoreIndexCreator().from_documents(docs)
 llm = ChatOpenAI()
 chain = load_qa_chain(llm=llm, chain_type="stuff")
+lang = "EN"
 
 if 'messages' not in st.session_state:
-    st.session_state.messages=[SystemMessage(content="You are a helpfull chat assistan")]
+    st.session_state.messages=[SystemMessage(content=translation[lang]['helpfull'])]
 
+def download_file(fn):
+    with open(f"data/chats/{fn}", 'rb') as file:
+        contents = file.read()
+        st.sidebar.download_button(
+            label=translation[lang]["clicktoload"],
+            data=contents,
+            file_name=fn,
+            mime='text/plain'
+        )
+        
 def main():
-    global chain, docs
+    global chain, docs, lang
         
     with st.sidebar:
-        files = st.file_uploader('Cevaplarda olmasını istediğiniz txt dosyasını yükleyiniz.', 
-                         accept_multiple_files=True, type=["txt"])
+        
+        lang = st.selectbox(translation[lang]["language"], options=['EN', "TR"])
+        
+        files = st.file_uploader(translation[lang]["file_info"], 
+                         accept_multiple_files=True, type=["txt"], help=translation[lang]["help"])
         for file in files:           
             filepath = os.path.join(path, file.name)
             with open(f'{path}/{file.name}', 'w') as f:
                 f.write(file.getvalue().decode("utf-8"))
-            st.write(f'{file.name} dosyanız yüklendi...')
+            st.write(f'{file.name} {translation[lang]["loaded"]}')
+        
+        file_list = os.listdir(path=path)
+         # Display chat titles and delete icons
+        st.write(translation[lang]['filelist'])
+        reversed_keys = reversed(list(file_list))
+        for fn in reversed_keys:
+            empt = st.empty()
+            col1, col2, col3 = empt.columns([6, 2, 2])
+            if col1.button(fn, key = f"title{fn}" ):
+                print(f'File name : {fn}')
+                    
+            if col2.button("❌", key = f"del{fn}"):
+                st.session_state['delete'] = fn
+                                    
+            if col3.button('📥', key = f"edit{fn}"):
+                download_file(fn)
+                
+            # Check if we're in editing mode for this chat
+            if 'delete' in st.session_state and st.session_state['delete'] == fn:
+                if st.button(f'{translation[lang]["areyousure"]} \n\n{fn}?', key="custom_button"):
+                    # Store the id of the chat we're deleting
+                    if len(file_list) >1 : 
+                        print(f'Delete chat is {fn}')
+                        os.remove(f"data/chats/{fn}")
+                        del file_list[file_list.index(fn)]
+                        del st.session_state['delete']  # Exit delete mode after confirmation
+                        
+                    else:
+                        st.write('If only ONE file exists \nUpload another txt document first')
+                    
+                else:
+                    print(f'Waiting for confirmation to delete chat {fn}')
       
         
-    query = st.chat_input('Bana istediğin herşeyi sorabilirsin canım')
+    query = st.chat_input(translation[lang]["askme"])
     if query:
         response = index.query(query)
         print(response)

@@ -86,7 +86,7 @@ def main():
                         del st.session_state['delete']  # Exit delete mode after confirmation
                         
                     else:
-                        st.write(translation[lang['onefile']])
+                        st.write(translation[lang]['onefile'])
                     
                 else:
                     print(f'Waiting for confirmation to delete chat {fn}')

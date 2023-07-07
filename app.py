@@ -52,7 +52,7 @@ def main():
         
         files = st.file_uploader(translation[lang]["file_info"], 
                          accept_multiple_files=True, type=["txt"], help=translation[lang]["help"])
-        st.header(translation[lang]['header'])
+        
         for file in files:           
             filepath = os.path.join(path, file.name)
             with open(f'{path}/{file.name}', 'w') as f:
@@ -91,7 +91,7 @@ def main():
                 else:
                     print(f'Waiting for confirmation to delete chat {fn}')
       
-        
+    st.header(translation[lang]['header'])  
     query = st.chat_input(translation[lang]["askme"])
     if query:
         response = index.query(query)

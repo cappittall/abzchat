@@ -12,7 +12,7 @@ from langchain.document_loaders import TextLoader
 from langchain.chains.question_answering import load_qa_chain
 from langchain.indexes import VectorstoreIndexCreator
 
-load_env()
+# load_env()
 
 path = "data/chats"
 

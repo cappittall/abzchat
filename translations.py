@@ -9,7 +9,8 @@ translation = {
         "areyousure" : "Are you sure you want to delete",
         "askme" : "Ask me what ever you like....",
         "filelist":" File list",
-        "help" : "Drag and drop files or click to upload."
+        "help" : "Drag and drop files or click to upload.",
+        "onefile"  :"If only ONE! file exists Upload another txt document first"
     },
     "TR": {
         "header" : " 📜 🖋️ Kendi dosyalarınız ile konuşun",
@@ -18,10 +19,11 @@ translation = {
         "loaded" : "Dosyanız yüklendi",
         "clicktoload" : "Yüklemek için tıklayınız.",
         "helpfull" : "Sen çor yardımcı bir asistansın",
-        "areyousure": "Silmek için eminmisiniz.",
+        "areyousure": "Silmek istediğinizden eminmisiniz.",
         "askme" : "Bana istediğin herşeyi sorabilirsin...",
         "filelist": "Dosya listesi",
-        "help" : "Dosyalarınızı sürükleyin yada yüklemek için tıklayın."
+        "help" : "Dosyalarınızı sürükleyin yada yüklemek için tıklayın.",
+        "onefile"  :"Eğer tek bir dosyanıs varsa, silmeden önce yeni dosya yükleyin."
         
     }
 }

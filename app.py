@@ -28,7 +28,7 @@ docs = loader.load()
 index = VectorstoreIndexCreator().from_documents(docs)
 llm = ChatOpenAI()
 chain = load_qa_chain(llm=llm, chain_type="stuff")
-lang = "EN"
+lang = "TR"
 
 if 'messages' not in st.session_state:
     st.session_state.messages=[SystemMessage(content=translation[lang]['helpfull'])]

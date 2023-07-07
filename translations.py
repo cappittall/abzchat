@@ -1,5 +1,6 @@
 translation = {
     "EN" : {
+        "header" : " 📜 🖋️ Chat with your own documents",
         "language" : "Language",
         "file_info": 'Please load your own question-answer txt file...',
         "loaded" : 'File uploaded',
@@ -11,6 +12,7 @@ translation = {
         "help" : "Drag and drop files or click to upload."
     },
     "TR": {
+        "header" : " 📜 🖋️ Kendi dosyalarınız ile konuşun",
         "language": "Dil seçiniz",
         "file_info": "Kendi Soru-Cevap listenizin olduğu txt dosyasını yükleyin",
         "loaded" : "Dosyanız yüklendi",

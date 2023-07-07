@@ -52,6 +52,7 @@ def main():
         
         files = st.file_uploader(translation[lang]["file_info"], 
                          accept_multiple_files=True, type=["txt"], help=translation[lang]["help"])
+        st.header(translation[lang]['header'])
         for file in files:           
             filepath = os.path.join(path, file.name)
             with open(f'{path}/{file.name}', 'w') as f:

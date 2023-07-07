@@ -23,7 +23,7 @@ translation = {
         "askme" : "Bana istediğin herşeyi sorabilirsin...",
         "filelist": "Dosya listesi",
         "help" : "Dosyalarınızı sürükleyin yada yüklemek için tıklayın.",
-        "onefile"  :"Eğer tek bir dosyanıs varsa, silmeden önce yeni dosya yükleyin."
+        "onefile"  :"Eğer tek bir dosyanız varsa, silmeden önce yeni bir dosya yükleyin."
         
     }
 }

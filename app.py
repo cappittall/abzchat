@@ -40,10 +40,16 @@ def download_file(fn):
             label=translation[lang]["clicktoload"],
             data=contents,
             file_name=fn,
-            mime='text/plain'
-        )
+            mime='text/plain'        )
+        
+def init():
+    # setup streamlit page
+    st.set_page_config(
+        page_title=' My own Chat GPT  ',
+        page_icon='data/img/snake.png' )
         
 def main():
+    init()
     global chain, docs, lang
         
     with st.sidebar:

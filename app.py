@@ -54,7 +54,6 @@ def main():
                          accept_multiple_files=True, type=["txt"], help=translation[lang]["help"])
         
         for file in files:           
-            filepath = os.path.join(path, file.name)
             with open(f'{path}/{file.name}', 'w') as f:
                 f.write(file.getvalue().decode("utf-8"))
             st.write(f'{file.name} {translation[lang]["loaded"]}')
@@ -64,6 +63,7 @@ def main():
         st.write(translation[lang]['filelist'])
         reversed_keys = reversed(list(file_list))
         for fn in reversed_keys:
+            if fn=="aboutme.txt": continue
             empt = st.empty()
             col1, col2, col3 = empt.columns([6, 2, 2])
             if col1.button(fn, key = f"title{fn}" ):

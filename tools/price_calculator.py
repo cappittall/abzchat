@@ -2,20 +2,20 @@ class CoatingPriceCalculator:
     def __init__(self, df):
         self.df = df
         self.coating_types = {
-            1: "BALINIT® A (TiN)",
-            2: "BALINIT® B (TiCN)",
-            3: "BALINIT® C (WC/C)",
-            4: "BALINIT® CAST (CrC)",
-            5: "BALINIT® D (CrN)",
-            6: "BALINIT® FUTURA NANO (TiAlN)",
-            7: "BALINIT® FUTURA TOP (TiAlN)",
-            8: "BALINIT® A + C",
-            9: "BALINIT® B + C",
-            10: "BALINIT® FUTURA NANO + C",
-            11: "BALINIT® G + C",
-            12: "BALINIT® TRITON (DLC)",
-            13: "BALINIT® LUMENA (TiAlN)",
-            14: "BALINIT® ALCRONA (AlCrN)"
+            1: "B A (TiN)",
+            2: "B B (TiCN)",
+            3: "B C (WC/C)",
+            4: "B CAST (CrC)",
+            5: "B D (CrN)",
+            6: "B FT NN (TiAlN)",
+            7: "B FT TOP (TiAlN)",
+            8: "B A + C",
+            9: "B B + C",
+            10: "B FT NN + C",
+            11: "B G + C",
+            12: "B TRN (DLC)",
+            13: "B LMN (TiAlN)",
+            14: "B ALCRN (AlCrN)"
         }
 
     def calculate_coating_price(self, piece_type, diameter=None, length=None, width=None, height=None, type = 1):
@@ -79,7 +79,7 @@ import pandas as pd
 data = {
     "H": [0.100, 0.200, 0.300, 0.400, 0.500, 0.600, 0.800, 1.000, 2.000, 3.000, 4.000, 6.000, 10.000, 15.000, 20.000, 30.000, 45.000, 60.000, 75.000, 120.000, 140.000, 240.000, 700.000, 1200.000, 1800.000, 3500.000, 4500.000, 5500.000, 7500.000, 8500.000, 9500.000, 25000.000, 65000.000, 85000.000],
     "I": [10.58, 8.81, 4.41, 3.35, 2.65, 2.30, 1.95, 1.67, 1.33, 1.12, 0.83, 0.63, 0.44, 0.34, 0.30, 0.23, 0.20, 0.19, 0.18, 0.17, 0.16, 0.15, 0.14, 0.13, 0.12, 0.11, 0.10, 0.09, 0.08, 0.07, 0.06, 0.05, 0.04, 0.03],
-    "J": ["BALINIT® A (TiN)", "BALINIT® B (TiCN)", "BALINIT® C (WC/C)", "BALINIT® CAST (CrC)", "BALINIT® D (CrN)", "BALINIT® FUTURA NANO (TiAlN)", "BALINIT® FUTURA TOP (TiAlN)", "BALINIT® A + C", "BALINIT® B + C", "BALINIT® FUTURA NANO + C", "BALINIT® G + C", "BALINIT® TRITON (DLC)", "BALINIT® LUMENA (TiAlN)", "BALINIT® ALCRONA (AlCrN)", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    "J": ["B A (TiN)", "B B (TiCN)", "B C (WC/C)", "B CAST (CrC)", "B D (CrN)", "B FT NN (TiAlN)", "B FT TOP (TiAlN)", "B A + C", "B B + C", "B FT NN + C", "B G + C", "B TRN (DLC)", "B LMN (TiAlN)", "B ALCRN (AlCrN)", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
     "C": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 29.0, 30.0, 31.0, 32.0, 33.0, 34.0],
 }
 
